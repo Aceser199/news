@@ -10,7 +10,7 @@ class Repository {
   ];
   List<Cache> caches = <Cache>[newsDbProvider];
 
-  Future<List<dynamic>> fetchTopIds() async {
+  Future<List<int>> fetchTopIds() async {
     return await sources[1].fetchTopIds();
   }
 
