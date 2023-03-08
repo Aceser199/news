@@ -9,9 +9,9 @@ import '../models/item_model.dart';
 class NewsDbProvider {
   late Database db;
 
-  // NewsDbProvider() {
-  //   init();
-  // }
+  NewsDbProvider() {
+    init();
+  }
 
   init() async {
     // Get the directory where the app can store files
