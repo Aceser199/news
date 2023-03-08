@@ -1,3 +1,4 @@
+import 'package:news/resources/repository.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
@@ -6,7 +7,7 @@ import 'dart:async';
 
 import '../models/item_model.dart';
 
-class NewsDbProvider {
+class NewsDbProvider implements Source, Cache {
   late Database db;
 
   NewsDbProvider() {
@@ -44,6 +45,7 @@ class NewsDbProvider {
     );
   }
 
+  @override
   Future<ItemModel?> fetchItem(int id) async {
     final maps = await db.query(
       "Items",
@@ -59,11 +61,17 @@ class NewsDbProvider {
     return null;
   }
 
+  @override
   Future<int> addItem(ItemModel item) {
     return db.insert(
       "Items",
       item.toMapForDb(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
+  }
+
+  @override
+  Future<List<int>> fetchTopIds() {
+    throw UnimplementedError();
   }
 }
