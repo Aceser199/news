@@ -75,3 +75,5 @@ class NewsDbProvider implements Source, Cache {
     throw UnimplementedError();
   }
 }
+
+final newsDbProvider = NewsDbProvider();
