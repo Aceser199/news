@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news/blocs/stories_provider.dart';
+import 'package:news/widgets/news_list_tile.dart';
+import 'package:news/widgets/refresh.dart';
 import 'package:path/path.dart';
 
 class NewsList extends StatelessWidget {
@@ -23,11 +25,14 @@ class NewsList extends StatelessWidget {
           );
         }
 
-        return ListView.builder(
-          itemCount: snapshot.data!.length,
-          itemBuilder: (context, int index) {
-            return Text(snapshot.data![index].toString());
-          },
+        return Refresh(
+          child: ListView.builder(
+            itemCount: snapshot.data!.length,
+            itemBuilder: (context, int index) {
+              bloc.fetchItem(snapshot.data![index]);
+              return NewsListTile(itemId: snapshot.data![index]);
+            },
+          ),
         );
       },
     );

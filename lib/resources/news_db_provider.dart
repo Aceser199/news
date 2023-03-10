@@ -66,13 +66,18 @@ class NewsDbProvider implements Source, Cache {
     return db.insert(
       "Items",
       item.toMapForDb(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
+      conflictAlgorithm: ConflictAlgorithm.ignore,
     );
   }
 
   @override
   Future<List<int>> fetchTopIds() {
     throw UnimplementedError();
+  }
+
+  @override
+  Future<int> clear() async {
+    return await db.delete("Items");
   }
 }
 
