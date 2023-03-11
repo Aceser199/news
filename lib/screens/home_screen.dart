@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Top News'),
       ),
-      body: StoriesProvider(child: const NewsList()),
+      body: const NewsList(),
     );
   }
 }

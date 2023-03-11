@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:news/blocs/stories_provider.dart';
 import 'package:news/widgets/news_list_tile.dart';
 import 'package:news/widgets/refresh.dart';
-import 'package:path/path.dart';
 
 class NewsList extends StatelessWidget {
   const NewsList({super.key});
@@ -11,7 +10,7 @@ class NewsList extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = StoriesProvider.of(context);
     // TODO: implement build
-    bloc.fetchTopIds();
+    // bloc.fetchTopIds();
     return buildList(bloc);
   }
 
